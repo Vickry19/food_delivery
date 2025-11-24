@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "203570544489",
+    "project_id": "food-order-app-f330c",
+    "storage_bucket": "food-order-app-f330c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203570544489:android:7e033fcda5e8436fbcc7f8",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx4b3PxAkjaqogcAjKCU_aHXJr-jzeLM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
