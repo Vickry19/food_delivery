@@ -60,6 +60,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     final formatCurrency =
         NumberFormat.currency(locale: 'id_ID', symbol: '\Rp ');
     final isFav = app.isFavorite(widget.food);
+    final addOns = widget.food.addOns;
+
 
     return Scaffold(
       backgroundColor: Colors.white,

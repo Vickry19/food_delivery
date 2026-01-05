@@ -195,63 +195,71 @@ class _OrderHistoryPageState extends State<OrderHistoryPage>
 
                     // Tombol baris pertama
                     Row(
-                      children: [
-                        Expanded(
-                          child: OutlinedButton(
-                            onPressed: () =>
-                                _showCancelDialog(context, prov, o.id),
-                            style: OutlinedButton.styleFrom(
-                              foregroundColor: Colors.red,
-                              side: const BorderSide(color: Colors.red),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                            child: const Text(
-                              'Cancel',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: () => _launchMaps(),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                            child: const Text(
-                              'Track Order',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+  children: [
+    // ❌ Cancel
+    Expanded(
+      child: OutlinedButton(
+        onPressed: () => _showCancelDialog(context, prov, o.id),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Colors.red,
+          side: const BorderSide(color: Colors.red),
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        child: const Text(
+          'Cancel',
+          style: TextStyle(fontSize: 12),
+        ),
+      ),
+    ),
 
-                    const SizedBox(height: 8),
+    const SizedBox(width: 8),
 
-                    // Tombol pesanan diterima (full width)
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () =>
-                            _showConfirmReceivedDialog(context, prov, o.id),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                        ),
-                        child: const Text(
-                          'Pesanan Diterima',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                    ),
+    // 📍 Track Order
+    Expanded(
+      child: ElevatedButton(
+        onPressed: () => _launchMaps(),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.orange,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        child: const Text(
+          'Track Order',
+          style: TextStyle(fontSize: 12),
+        ),
+      ),
+    ),
+
+    const SizedBox(width: 8),
+
+    // ✅ Pesanan Diterima
+    Expanded(
+      child: ElevatedButton(
+        onPressed: () =>
+            _showConfirmReceivedDialog(context, prov, o.id),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.green,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+        ),
+        ),
+        child: const Text(
+          'Pesanan Tiba',
+          style: TextStyle(
+            fontSize: 12,
+          ),
+        ),
+      ),
+    ),
+  ],
+),
+
                   ],
                 ],
               ),

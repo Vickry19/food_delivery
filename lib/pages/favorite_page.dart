@@ -100,10 +100,11 @@ class _FavoritePageState extends State<FavoritePage>
 
   // Widget untuk membangun kartu makanan favorit
   Widget _buildFoodCard(Food food) {
-    final currency = NumberFormat.currency(locale: 'id_ID', symbol: '\Rp ');
+    final currency =
+        NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
 
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, '/detail', arguments: food),
+      onTap: () => Navigator.pushNamed(context, '/detail', arguments: food,),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -157,23 +158,13 @@ class _FavoritePageState extends State<FavoritePage>
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.attach_money,
-                          size: 16,
-                          color: Color(0xFFFF6F00),
-                        ),
-                        const SizedBox(width: 2),
-                        Text(
-                          currency.format(food.price),
-                          style: const TextStyle(
-                            color: Color(0xFFFF6F00),
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      currency.format(food.price),
+                      style: const TextStyle(
+                        color: Color(0xFFFF6F00),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                      ),
                     ),
                   ],
                 ),

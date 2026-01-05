@@ -417,7 +417,7 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: isDark ? Colors.grey[850] : Colors.white,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.05),
@@ -429,42 +429,41 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // GAMBAR (sama seperti Favorite)
                         Expanded(
                           flex: 3,
                           child: ClipRRect(
                             borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(15)),
-                            child: AspectRatio(
-                              aspectRatio: 1, // ⬅️ PAKSA PERSEGI (SAMARATA)
-                              child: Stack(
-                                fit: StackFit.expand,
-                                children: [
-                                  Image.asset(
-                                    food.image,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Positioned(
-                                    top: 8,
-                                    right: 8,
-                                    child: IconButton(
-                                      icon: Icon(
-                                        isFav
-                                            ? Icons.favorite
-                                            : Icons.favorite_border,
-                                        color:
-                                            isFav ? Colors.red : Colors.white,
-                                      ),
-                                      onPressed: () => Provider.of<AppProvider>(
-                                        context,
-                                        listen: false,
-                                      ).toggleFavorite(food),
+                                top: Radius.circular(12)),
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                Image.asset(
+                                  food.image,
+                                  fit: BoxFit.cover,
+                                ),
+                                Positioned(
+                                  top: 8,
+                                  right: 8,
+                                  child: IconButton(
+                                    icon: Icon(
+                                      isFav
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: isFav ? Colors.red : Colors.white,
                                     ),
+                                    onPressed: () => Provider.of<AppProvider>(
+                                      context,
+                                      listen: false,
+                                    ).toggleFavorite(food),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
+
+                        // DETAIL (SAMA PERSIS FAVORITE PAGE)
                         Expanded(
                           flex: 2,
                           child: Padding(
@@ -475,10 +474,9 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Text(
                                   food.name,
-                                  style: TextStyle(
-                                    color:
-                                        isDark ? Colors.white : Colors.black87,
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 14,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -486,9 +484,9 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   currency.format(food.price),
                                   style: const TextStyle(
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                                    color: Color(0xFFFF6F00),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 15,
                                   ),
                                 ),
                               ],
