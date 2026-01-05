@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shopeefood_local/pages/manage_address_page.dart';
 import 'package:shopeefood_local/pages/order_history_page.dart';
@@ -60,50 +61,73 @@ class _HomePageState extends State<HomePage> {
         name: 'Nasi Goreng',
         price: 20000,
         description: "Nasi goreng spesial dengan bumbu rahasia",
-        image: 'assets/images/nasi_goreng.jpg',
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/nasi_goreng.png',
         category: 'Makanan'),
     Food(
         id: 2,
         name: 'Es Teh Manis',
         price: 5000,
         description: "Teh pilihan dengan gula asli",
-        image: 'assets/images/es_teh.jpg',
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/es_teh.jpg',
         category: 'Minuman'),
     Food(
         id: 3,
         name: 'Mie Ayam',
         price: 15000,
         description: "Mie dengan topping ayam cincang",
-        image: 'assets/images/mie_ayam.jpg',
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/mie_ayam.jpg',
         category: 'Makanan'),
     Food(
         id: 4,
         name: 'Ayam Geprek',
         price: 25000,
         description: "Ayam Geprek dengan sambal mantap",
-        image: 'assets/images/ayam_geprek.jpg',
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/ayam_geprek.jpg',
         category: 'Makanan'),
     Food(
         id: 5,
         name: 'Burger',
         price: 30000,
         description: "Burger daging sapi premium",
-        image: 'assets/images/burger.jpg',
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/burger.jpg',
         category: 'Burger'),
     Food(
         id: 6,
         name: 'Kentang Goreng',
         price: 18000,
         description: "Kentang renyah dengan saus pilihan",
-        image: 'assets/images/kentang.jpg',
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/kentang.jpg',
         category: 'Snack'),
     Food(
         id: 7,
         name: 'Pizza',
         price: 75000,
         description: "Pizza dengan topping keju melimpah",
-        image: 'assets/images/pizza.jpg',
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/pizza.jpg',
         category: 'Pizza'),
+    Food(
+        id: 8,
+        name: 'Sushi',
+        price: 750000,
+        description: "Sushi dengan topping terbaik",
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/sushi.jpg',
+        category: 'Sushi'),
+    Food(
+        id: 9,
+        name: 'Es Jeruk',
+        price: 75000,
+        description: "Es jeruk dengan gula asli",
+        image:
+            'https://vickry19.github.io/food_delivery/assets/images/es_jeruk.jpg',
+        category: 'Minuman'),
   ];
 
   // Data Restoran
@@ -203,6 +227,8 @@ class _HomePageState extends State<HomePage> {
   // ===================== 🔸 TAB HOME 🔸 =====================
   Widget _buildHomeTab(AppProvider prov) {
     final isDark = prov.isDark;
+    final currency =
+        NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
 
     // Filter makanan berdasarkan kategori dan pencarian
     final filteredFoods = allFoods.where((f) {
@@ -293,7 +319,7 @@ class _HomePageState extends State<HomePage> {
                                 top: Radius.circular(15)),
                             child: Stack(
                               children: [
-                                Image.asset(
+                                Image.network(
                                   food.image,
                                   fit: BoxFit.cover,
                                   width: double.infinity,
@@ -344,7 +370,7 @@ class _HomePageState extends State<HomePage> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 Text(
-                                  'Rp. ${food.price}',
+                                  currency.format(food.price),
                                   style: const TextStyle(
                                     color: Colors.orange,
                                     fontWeight: FontWeight.bold,
@@ -381,32 +407,33 @@ class _HomePageState extends State<HomePage> {
             : 'Set your address';
 
     return InkWell(
-    // ✅ Panggil bottom sheet baru saat diketuk
-    onTap: () => _showAddressBottomSheet(context, prov),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Deliver to',
-          style: TextStyle(color: Colors.grey, fontSize: 12),
-        ),
-        Row(
-          children: [
-            const Icon(Icons.location_on, color: Colors.orange, size: 16),
-            const SizedBox(width: 4),
-            Flexible(
-              child: Text(
-                displayAddress,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                overflow: TextOverflow.ellipsis,
+      // ✅ Panggil bottom sheet baru saat diketuk
+      onTap: () => _showAddressBottomSheet(context, prov),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Deliver to',
+            style: TextStyle(color: Colors.grey, fontSize: 12),
+          ),
+          Row(
+            children: [
+              const Icon(Icons.location_on, color: Colors.orange, size: 16),
+              const SizedBox(width: 4),
+              Flexible(
+                child: Text(
+                  displayAddress,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-            const Icon(Icons.keyboard_arrow_down, color: Colors.orange),
-          ],
-        ),
-      ],
-    ),
-  );
+              const Icon(Icons.keyboard_arrow_down, color: Colors.orange),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
 // Tambahkan metode ini untuk menampilkan dialog pemilihan alamat
@@ -415,129 +442,134 @@ class _HomePageState extends State<HomePage> {
 // ... di dalam class _HomePageState ...
 
 // ✅ TAMBAHKAN METHOD BARU INI
-void _showAddressBottomSheet(BuildContext context, AppProvider prov) {
-  final TextEditingController _newAddressController = TextEditingController();
+  void _showAddressBottomSheet(BuildContext context, AppProvider prov) {
+    final TextEditingController _newAddressController = TextEditingController();
 
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true, // Penting agar TextField tidak tertutup keyboard
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-    ),
-    builder: (context) => Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom, // Sesuaikan dengan keyboard
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled:
+          true, // Penting agar TextField tidak tertutup keyboard
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      child: DraggableScrollableSheet(
-        initialChildSize: 0.6, // Mulai dari 60% tinggi layar
-        minChildSize: 0.4,
-        maxChildSize: 0.9,
-        expand: false,
-        builder: (_, controller) => Container(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Garis pegangan di atas
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 5,
-                  margin: const EdgeInsets.only(bottom: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(10),
+      builder: (context) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context)
+              .viewInsets
+              .bottom, // Sesuaikan dengan keyboard
+        ),
+        child: DraggableScrollableSheet(
+          initialChildSize: 0.6, // Mulai dari 60% tinggi layar
+          minChildSize: 0.4,
+          maxChildSize: 0.9,
+          expand: false,
+          builder: (_, controller) => Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Garis pegangan di atas
+                Center(
+                  child: Container(
+                    width: 40,
+                    height: 5,
+                    margin: const EdgeInsets.only(bottom: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
-              ),
-              const Text(
-                'Pilih Alamat Pengiriman',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 16),
-              
-              // Daftar alamat yang sudah ada
-              if (prov.user.addresses.isNotEmpty) ...[
-                Expanded(
-                  child: ListView.builder(
-                    controller: controller, // Gunakan controller dari DraggableScrollableSheet
-                    itemCount: prov.user.addresses.length,
-                    itemBuilder: (context, index) {
-                      final address = prov.user.addresses[index];
+                const Text(
+                  'Pilih Alamat Pengiriman',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 16),
 
-                      return RadioListTile<String>(
-                        title: Text(address),
-                        value: address,
-                        groupValue: prov.user.address,
-                        activeColor: Colors.orange,
-                        onChanged: (value) {
-                          prov.setDefaultAddress(value!);
-                          Navigator.pop(context); // Tutup bottom sheet
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Alamat berhasil diperbarui')),
-                          );
-                        },
-                      );
+                // Daftar alamat yang sudah ada
+                if (prov.user.addresses.isNotEmpty) ...[
+                  Expanded(
+                    child: ListView.builder(
+                      controller:
+                          controller, // Gunakan controller dari DraggableScrollableSheet
+                      itemCount: prov.user.addresses.length,
+                      itemBuilder: (context, index) {
+                        final address = prov.user.addresses[index];
+
+                        return RadioListTile<String>(
+                          title: Text(address),
+                          value: address,
+                          groupValue: prov.user.address,
+                          activeColor: Colors.orange,
+                          onChanged: (value) {
+                            prov.setDefaultAddress(value!);
+                            Navigator.pop(context); // Tutup bottom sheet
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Alamat berhasil diperbarui')),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  const Divider(),
+                ],
+
+                // Bagian untuk menambah alamat baru
+                const Text(
+                  'Tambah Alamat Baru',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _newAddressController,
+                  decoration: const InputDecoration(
+                    hintText: 'Masukkan alamat baru',
+                    border: OutlineInputBorder(),
+                  ),
+                  autofocus: true,
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      final newAddress = _newAddressController.text.trim();
+                      if (newAddress.isNotEmpty) {
+                        // Tambahkan alamat baru
+                        await prov.addAddress(newAddress);
+                        // Langsung jadikan sebagai alamat utama
+                        await prov.setDefaultAddress(newAddress);
+                        Navigator.pop(context); // Tutup sheet
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Alamat baru berhasil ditambahkan'),
+                            backgroundColor: Colors.green,
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Alamat tidak boleh kosong'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                    ),
+                    child: const Text('Simpan Alamat Baru'),
                   ),
                 ),
-                const Divider(),
               ],
-
-              // Bagian untuk menambah alamat baru
-              const Text(
-                'Tambah Alamat Baru',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              TextField(
-                controller: _newAddressController,
-                decoration: const InputDecoration(
-                  hintText: 'Masukkan alamat baru',
-                  border: OutlineInputBorder(),
-                ),
-                autofocus: true,
-              ),
-              const SizedBox(height: 16),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    final newAddress = _newAddressController.text.trim();
-                    if (newAddress.isNotEmpty) {
-                      // Tambahkan alamat baru
-                      await prov.addAddress(newAddress);
-                      // Langsung jadikan sebagai alamat utama
-                      await prov.setDefaultAddress(newAddress);
-                      Navigator.pop(context); // Tutup sheet
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Alamat baru berhasil ditambahkan'),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Alamat tidak boleh kosong'),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                  ),
-                  child: const Text('Simpan Alamat Baru'),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget _buildSearchBar(bool isDark) {
     return Container(
@@ -802,4 +834,3 @@ void _showAddressBottomSheet(BuildContext context, AppProvider prov) {
     );
   }
 }
-

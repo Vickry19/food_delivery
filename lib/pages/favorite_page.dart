@@ -67,17 +67,6 @@ class _FavoritePageState extends State<FavoritePage>
             ),
           ),
         ],
-        // Pindahkan TabBar ke sini
-        bottom: TabBar(
-          controller: _tabController,
-          labelColor: Colors.orange,
-          unselectedLabelColor: Colors.grey,
-          indicatorColor: Colors.orange,
-          tabs: const [
-            Tab(text: "Food Items"),
-            Tab(text: "Resturents"),
-          ],
-        ),
       ),
       // =======================================================================
 
@@ -104,8 +93,6 @@ class _FavoritePageState extends State<FavoritePage>
                     },
                   ),
                 ),
-          // Tab untuk Restaurants (placeholder untuk saat ini)
-          _buildRestaurantsPlaceholder(),
         ],
       ),
     );
@@ -224,23 +211,5 @@ class _FavoritePageState extends State<FavoritePage>
   }
 
   // Widget placeholder untuk tab Restaurants
-  Widget _buildRestaurantsPlaceholder() {
-    return const Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.restaurant, size: 80, color: Colors.grey),
-          SizedBox(height: 16),
-          Text(
-            'No favorite restaurants yet',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black54,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  
 }

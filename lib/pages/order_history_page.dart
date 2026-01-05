@@ -178,50 +178,81 @@ class _OrderHistoryPageState extends State<OrderHistoryPage>
                   ),
                   const SizedBox(height: 12),
                   // Aksi untuk pesanan mendatang
-                  if (isUpcoming)
+                  if (isUpcoming) ...[
+                    const SizedBox(height: 12),
+
+                    // Harga
+                    Text(
+                      currency.format(o.total),
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // Tombol baris pertama
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          currency.format(o.total),
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                        Expanded(
+                          child: OutlinedButton(
+                            onPressed: () =>
+                                _showCancelDialog(context, prov, o.id),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: Colors.red,
+                              side: const BorderSide(color: Colors.red),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            child: const Text(
+                              'Cancel',
+                              style: TextStyle(fontSize: 12),
+                            ),
                           ),
                         ),
-                        Row(
-                          children: [
-                            // ✅ TOMBOL CANCEL
-                            TextButton(
-                              onPressed: () =>
-                                  _showCancelDialog(context, prov, o.id),
-                              child: const Text('Cancel',
-                                  style: TextStyle(color: Colors.red)),
-                            ),
-                            const SizedBox(width: 8),
-                            // ✅ TOMBOL TRACK ORDER
-                            ElevatedButton(
-                              onPressed: () => _launchMaps(),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.orange,
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () => _launchMaps(),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              child: const Text('Track Order'),
                             ),
-                            const SizedBox(width: 8),
-                            // ✅ TOMBOL PESANAN DITERIMA
-                            ElevatedButton(
-                              onPressed: () => _showConfirmReceivedDialog(
-                                  context, prov, o.id),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                              ),
-                              child: const Text('Pesanan Diterima'),
+                            child: const Text(
+                              'Track Order',
+                              style: TextStyle(fontSize: 12),
                             ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
+
+                    const SizedBox(height: 8),
+
+                    // Tombol pesanan diterima (full width)
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () =>
+                            _showConfirmReceivedDialog(context, prov, o.id),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                        ),
+                        child: const Text(
+                          'Pesanan Diterima',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),

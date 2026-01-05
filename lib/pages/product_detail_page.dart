@@ -15,10 +15,12 @@ class ProductDetailPage extends StatefulWidget {
 }
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
-
   List<Map<String, dynamic>> get _getSelectedAddOns {
-    return addOns.where((addOn) => selectedAddOns[addOn['name']] == true).toList();
+    return addOns
+        .where((addOn) => selectedAddOns[addOn['name']] == true)
+        .toList();
   }
+
   // Data untuk pilihan "Add On"
   final List<Map<String, dynamic>> addOns = [
     {'name': 'Pepper Julienne', 'price': 2500},
@@ -49,10 +51,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     return totalPrice;
   }
 
-  @override
+  final NumberFormat rupiah = NumberFormat.currency(
+    locale: 'id_ID',
+    symbol: 'Rp ',
+    decimalDigits: 0,
+  );
+
   Widget build(BuildContext context) {
     final app = Provider.of<AppProvider>(context);
-    final formatCurrency = NumberFormat.currency(locale: 'id_ID', symbol: '\Rp ');
+    final formatCurrency =
+        NumberFormat.currency(locale: 'id_ID', symbol: '\Rp ');
     final isFav = app.isFavorite(widget.food);
 
     return Scaffold(
@@ -206,24 +214,54 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   const SizedBox(height: 12),
                   // Daftar Add On dengan Checkbox
                   ...addOns.map((addOn) {
-                    return CheckboxListTile(
-                      title: Text(addOn['name']),
-                      value: selectedAddOns[addOn['name']],
-                      activeColor: Colors.orange,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          selectedAddOns[addOn['name']] = value!;
-                        });
-                      },
-                      secondary: Text(
-                        'Rp ${addOn['price'].toStringAsFixed(2)}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange,
-                        ),
+                    return Container(
+                      margin: const EdgeInsets.only(bottom: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        children: [
+                          // Harga
+                          Text(
+                            rupiah.format(addOn['price']),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.orange,
+                              fontSize: 13,
+                            ),
+                          ),
+
+                          const SizedBox(width: 12),
+
+                          // Nama Add-on
+                          Expanded(
+                            child: Text(
+                              addOn['name'],
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+
+                          // Checkbox (STATE TETAP SAMA)
+                          Checkbox(
+                            value: selectedAddOns[addOn['name']],
+                            activeColor: Colors.orange,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                selectedAddOns[addOn['name']] = value!;
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     );
                   }).toList(),
+
                   const SizedBox(height: 24),
 
                   // Tombol ADD TO CART

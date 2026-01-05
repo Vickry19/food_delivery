@@ -37,4 +37,6 @@ flutter:
     - assets/images/pizza_hut.jpg
     - assets/images/starbucks.jpg
     - assets/images/sushi_tei.jpg
+    - assets/images/sushi.jpg
+    - assets/images/es_jeruk.jpg
   uses-material-design: true
