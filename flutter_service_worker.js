@@ -27,7 +27,7 @@ const RESOURCES = {"flutter.js": "24bc71911b75b5f8135c949e27a2984e",
 "assets/assets/images/es_teh.jpg": "ac2b6a616aca2a992d7d466a2f18f8a4",
 "assets/assets/images/starbucks.jpg": "663a7bf4e09b594ab6b9cfbb16368661",
 "assets/assets/images/sushi.jpg": "c867d113b4021a4697775267bd27e81c",
-"assets/fonts/MaterialIcons-Regular.otf": "487c2628559b0c7617ae18dfa11f9565",
+"assets/fonts/MaterialIcons-Regular.otf": "b901549f5a86a602dcd592ad390afdfd",
 "assets/NOTICES": "f8c887f15abfa349f1efb1fa3aefec0e",
 "assets/packages/font_awesome_flutter/lib/fonts/Font-Awesome-7-Free-Solid-900.otf": "5b8d20acec3e57711717f61417c1be44",
 "assets/packages/font_awesome_flutter/lib/fonts/Font-Awesome-7-Brands-Regular-400.otf": "1fcba7a59e49001aa1b4409a25d425b0",
@@ -2157,9 +2157,9 @@ const RESOURCES = {"flutter.js": "24bc71911b75b5f8135c949e27a2984e",
 "canvaskit/canvaskit.js.symbols": "a3c9f77715b642d0437d9c275caba91e",
 "canvaskit/skwasm.js.symbols": "3a4aadf4e8141f284bd524976b1d6bdc",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"flutter_bootstrap.js": "0086b3f3753722e70930df6bbbd911e5",
+"flutter_bootstrap.js": "855e01c159e061547372b37600fc9927",
 "version.json": "d502f5b78e255883420334a009aafd3d",
-"main.dart.js": "612bfc71c9a49dfbe68176505452788e"};
+"main.dart.js": "cd35647f28dbf25c20958e0a58fa47e3"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
