@@ -9,7 +9,7 @@ import '../models/cart_item.dart';
 import '../models/order.dart';
 import '../models/user.dart'; // Pastikan ini mengimpor UserModel yang sudah diperbarui
 import '../services/storage_service.dart';
-import '../services/sample_data.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -32,7 +32,7 @@ class AppProvider extends ChangeNotifier {
   bool get isAdmin => _isAdmin;
 
   // --- FOODS ---
-  List<Food> _foods = sampleFoods;
+  final List<Food> _foods = [];
   List<Food> get foods => _foods;
 
   // --- CART ---
