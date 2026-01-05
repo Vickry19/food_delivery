@@ -8,6 +8,7 @@ class Food {
   final String image;
   final String description;
   final int price;
+  final List<Map<String, dynamic>> addOns;
 
   Food({
     required this.id,
@@ -16,6 +17,7 @@ class Food {
     required this.image,
     required this.description,
     required this.price,
+    required this.addOns,
   });
 
   // ==== Factory untuk Map (misalnya dari database lokal) ====
@@ -26,6 +28,7 @@ class Food {
         image: m['image'] ?? '',
         description: m['description'] ?? '',
         price: (m['price'] as num).toInt(),
+        addOns: m['addOns'] ?? [],
             
       );
 
@@ -48,6 +51,7 @@ class Food {
         image: json['image'] ?? '',
         description: json['description'] ?? '',
         price: (json['price'] as num).toInt(),
+        addOns: json['addOns'] ?? [],
       );
 
   get rating => null;

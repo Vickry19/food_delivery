@@ -158,17 +158,21 @@ class _FavoritePageState extends State<FavoritePage>
                     ),
                     const SizedBox(height: 4),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        const Icon(
+                          Icons.attach_money,
+                          size: 16,
+                          color: Color(0xFFFF6F00),
+                        ),
+                        const SizedBox(width: 2),
                         Text(
                           currency.format(food.price),
                           style: const TextStyle(
-                            color: Colors.orange,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
+                            color: Color(0xFFFF6F00),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
                           ),
                         ),
-      
                       ],
                     ),
                   ],
@@ -209,7 +213,4 @@ class _FavoritePageState extends State<FavoritePage>
       ),
     );
   }
-
-  // Widget placeholder untuk tab Restaurants
-  
 }

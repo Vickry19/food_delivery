@@ -22,11 +22,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   }
 
   // Data untuk pilihan "Add On"
-  final List<Map<String, dynamic>> addOns = [
-    {'name': 'Pepper Julienne', 'price': 2500},
-    {'name': 'Baby Spinach', 'price': 4500},
-    {'name': 'Mushroom', 'price': 2500},
-  ];
+  late List<Map<String, dynamic>> addOns;
+
 
   // Map untuk melacak Add On mana yang dipilih
   Map<String, bool> selectedAddOns = {};
@@ -34,6 +31,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   @override
   void initState() {
     super.initState();
+    addOns = widget.food.addOns;
     // Inisialisasi semua Add On sebagai tidak dipilih
     for (var addOn in addOns) {
       selectedAddOns[addOn['name']] = false;
@@ -191,16 +189,28 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 6),
+
+                  // Harga Produk
+                  Text(
+                    rupiah.format(widget.food.price),
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.orange,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
 
                   // Deskripsi
                   Text(
-                    'Cooked with onion, pepper, tomato and our special spices',
+                    widget.food.description,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[600],
                     ),
                   ),
+
                   const SizedBox(height: 24),
 
                   // Bagian "Choice of Add On"

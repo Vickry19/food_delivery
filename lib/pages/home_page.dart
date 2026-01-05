@@ -61,73 +61,190 @@ class _HomePageState extends State<HomePage> {
         name: 'Nasi Goreng',
         price: 20000,
         description: "Nasi goreng spesial dengan bumbu rahasia",
-        image:
-            'assets/images/nasi_goreng.jpg',
-        category: 'Makanan'),
+        image: 'assets/images/nasi_goreng.jpg',
+        category: 'Makanan',
+        addOns: [
+          {
+            'name': 'Udang',
+            'price': 8000,
+          },
+          {
+            'name': 'Telur',
+            'price': 5000,
+          },
+          {
+            'name': 'Sapi',
+            'price': 7000,
+          },
+        ]),
     Food(
         id: 2,
-        name: 'Es Teh Manis',
+        name: 'Teh Manis',
         price: 5000,
         description: "Teh pilihan dengan gula asli",
-        image:
-            'assets/images/es_teh.jpg',
-        category: 'Minuman'),
+        image: 'assets/images/es_teh.jpg',
+        category: 'Minuman',
+        addOns: [
+          {
+            'name': 'Teh panas',
+            'price': 0,
+          },
+          {
+            'name': 'Es Teh',
+            'price': 0,
+          },
+          {
+            'name': 'Teh Tawar',
+            'price': 0,
+          },
+        ]),
     Food(
         id: 3,
         name: 'Mie Ayam',
         price: 15000,
         description: "Mie dengan topping ayam cincang",
-        image:
-            'assets/images/mie_ayam.jpg',
-        category: 'Makanan'),
+        image: 'assets/images/mie_ayam.jpg',
+        category: 'Makanan',
+        addOns: [
+          {
+            'name': 'Ceker',
+            'price': 3000,
+          },
+          {
+            'name': 'Bakso',
+            'price': 5000,
+          },
+          {
+            'name': 'Kerupuk',
+            'price': 2000,
+          },
+        ]),
     Food(
         id: 4,
         name: 'Ayam Geprek',
-        price: 25000,
+        price: 15000,
         description: "Ayam Geprek dengan sambal mantap",
-        image:
-            'assets/images/ayam_geprek.jpg',
-        category: 'Makanan'),
+        image: 'assets/images/ayam_geprek.jpg',
+        category: 'Makanan',
+        addOns: [
+          {
+            'name': 'Nasi',
+            'price': 5000,
+          },
+          {
+            'name': 'Sambal Ijo',
+            'price': 2000,
+          },
+          {
+            'name': 'Sambal Matah',
+            'price': 3000,
+          },
+        ]),
     Food(
         id: 5,
         name: 'Burger',
-        price: 30000,
-        description: "Burger daging sapi premium",
-        image:
-            'assets/images/burger.jpg',
-        category: 'Burger'),
+        price: 20000,
+        description: "Burger daging ayam premium",
+        image: 'assets/images/burger.jpg',
+        category: 'Burger',
+        addOns: [
+          {
+            'name': 'Sapi',
+            'price': 8000,
+          },
+          {
+            'name': 'Telur',
+            'price': 3000,
+          },
+          {
+            'name': 'Keju',
+            'price': 7000,
+          },
+        ]),
     Food(
         id: 6,
         name: 'Kentang Goreng',
         price: 18000,
         description: "Kentang renyah dengan saus pilihan",
-        image:
-            'assets/images/kentang.jpg',
-        category: 'Snack'),
+        image: 'assets/images/kentang.jpg',
+        category: 'Snack',
+        addOns: [
+          {
+            'name': 'Bumbu balado',
+            'price': 3000,
+          },
+          {
+            'name': 'Bumbu Manis',
+            'price': 5000,
+          },
+          {
+            'name': 'Bumbu Asin',
+            'price': 2000,
+          },
+        ]),
     Food(
         id: 7,
         name: 'Pizza',
         price: 75000,
         description: "Pizza dengan topping keju melimpah",
-        image:
-            'assets/images/pizza.jpg',
-        category: 'Pizza'),
+        image: 'assets/images/pizza.jpg',
+        category: 'Pizza',
+        addOns: [
+          {
+            'name': 'Ayam',
+            'price': 5000,
+          },
+          {
+            'name': 'Sapi',
+            'price': 10000,
+          },
+          {
+            'name': 'Jamur',
+            'price': 7000,
+          },
+        ]),
     Food(
         id: 8,
         name: 'Sushi',
         price: 750000,
-        description: "Sushi dengan topping terbaik",
-        image:
-            'assets/images/sushi.jpg',
-        category: 'Sushi'),
+        description: "Sushi dengan berbagai macam topping",
+        image: 'assets/images/sushi.jpg',
+        category: 'Sushi',
+        addOns: [
+          {
+            'name': 'Mayonnaise',
+            'price': 0,
+          },
+          {
+            'name': 'Wasabi',
+            'price': 7000,
+          },
+          {
+            'name': 'Shoyu',
+            'price': 5000,
+          },
+        ]),
     Food(
         id: 9,
         name: 'Es Jeruk',
-        price: 75000,
+        price: 7500,
         description: "Es jeruk dengan gula asli",
-        image:
-            'assets/images/es_jeruk.jpg',
-        category: 'Minuman'),
+        image: 'assets/images/es_jeruk.jpg',
+        category: 'Minuman',
+        addOns: [
+          {
+            'name': 'Kelapa Muda',
+            'price': 5000,
+          },
+          {
+            'name': 'Biji Selasih',
+            'price': 3000,
+          },
+          {
+            'name': 'Madu',
+            'price': 6000,
+          },
+        ]),
   ];
 
   // Data Restoran
@@ -317,37 +434,34 @@ class _HomePageState extends State<HomePage> {
                           child: ClipRRect(
                             borderRadius: const BorderRadius.vertical(
                                 top: Radius.circular(15)),
-                            child: Stack(
-                              children: [
-                                Image.asset(
-                                  food.image,
-                                  fit: BoxFit.cover,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Container(
-                                      color: Colors.grey[300],
-                                      child: const Icon(Icons.fastfood,
-                                          color: Colors.grey),
-                                    );
-                                  },
-                                ),
-                                Positioned(
-                                  top: 8,
-                                  right: 8,
-                                  child: IconButton(
-                                    icon: Icon(
-                                      isFav
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                      color: isFav ? Colors.red : Colors.white,
-                                    ),
-                                    onPressed: () => Provider.of<AppProvider>(
-                                            context,
-                                            listen: false)
-                                        .toggleFavorite(food),
+                            child: AspectRatio(
+                              aspectRatio: 1, // ⬅️ PAKSA PERSEGI (SAMARATA)
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  Image.asset(
+                                    food.image,
+                                    fit: BoxFit.cover,
                                   ),
-                                ),
-                              ],
+                                  Positioned(
+                                    top: 8,
+                                    right: 8,
+                                    child: IconButton(
+                                      icon: Icon(
+                                        isFav
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
+                                        color:
+                                            isFav ? Colors.red : Colors.white,
+                                      ),
+                                      onPressed: () => Provider.of<AppProvider>(
+                                        context,
+                                        listen: false,
+                                      ).toggleFavorite(food),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
