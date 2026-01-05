@@ -123,7 +123,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
                     ),
-                    child: Image.network(
+                    child: Image.asset(
                       widget.food.image,
                       height: 300,
                       width: double.infinity,

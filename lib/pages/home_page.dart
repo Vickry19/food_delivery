@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         price: 20000,
         description: "Nasi goreng spesial dengan bumbu rahasia",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/nasi_goreng.png',
+            'assets/images/nasi_goreng.png',
         category: 'Makanan'),
     Food(
         id: 2,
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
         price: 5000,
         description: "Teh pilihan dengan gula asli",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/es_teh.jpg',
+            'assets/images/es_teh.jpg',
         category: 'Minuman'),
     Food(
         id: 3,
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
         price: 15000,
         description: "Mie dengan topping ayam cincang",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/mie_ayam.jpg',
+            'assets/images/mie_ayam.jpg',
         category: 'Makanan'),
     Food(
         id: 4,
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
         price: 25000,
         description: "Ayam Geprek dengan sambal mantap",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/ayam_geprek.jpg',
+            'assets/images/ayam_geprek.jpg',
         category: 'Makanan'),
     Food(
         id: 5,
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
         price: 30000,
         description: "Burger daging sapi premium",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/burger.jpg',
+            'assets/images/burger.jpg',
         category: 'Burger'),
     Food(
         id: 6,
@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
         price: 18000,
         description: "Kentang renyah dengan saus pilihan",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/kentang.jpg',
+            'assets/images/kentang.jpg',
         category: 'Snack'),
     Food(
         id: 7,
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
         price: 75000,
         description: "Pizza dengan topping keju melimpah",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/pizza.jpg',
+            'assets/images/pizza.jpg',
         category: 'Pizza'),
     Food(
         id: 8,
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
         price: 750000,
         description: "Sushi dengan topping terbaik",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/sushi.jpg',
+            'assets/images/sushi.jpg',
         category: 'Sushi'),
     Food(
         id: 9,
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
         price: 75000,
         description: "Es jeruk dengan gula asli",
         image:
-            'https://vickry19.github.io/food_delivery/assets/images/es_jeruk.jpg',
+            'assets/images/es_jeruk.jpg',
         category: 'Minuman'),
   ];
 
@@ -319,7 +319,7 @@ class _HomePageState extends State<HomePage> {
                                 top: Radius.circular(15)),
                             child: Stack(
                               children: [
-                                Image.network(
+                                Image.asset(
                                   food.image,
                                   fit: BoxFit.cover,
                                   width: double.infinity,

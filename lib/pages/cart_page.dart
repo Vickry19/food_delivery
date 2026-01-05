@@ -153,7 +153,7 @@ class _CartPageState extends State<CartPage> {
           // Gambar Makanan
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.network(
+            child: Image.asset(
               c.food.image,
               width: 80,
               height: 80,
