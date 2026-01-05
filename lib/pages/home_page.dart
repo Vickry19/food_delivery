@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         price: 20000,
         description: "Nasi goreng spesial dengan bumbu rahasia",
         image:
-            'assets/images/nasi_goreng.png',
+            'assets/images/nasi_goreng.jpg',
         category: 'Makanan'),
     Food(
         id: 2,
